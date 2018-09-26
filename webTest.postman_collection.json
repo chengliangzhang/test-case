@@ -1,0 +1,141 @@
+{
+	"variables": [],
+	"info": {
+		"name": "webTest",
+		"_postman_id": "890f9dff-2b91-b3d5-e7c5-148baf621873",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"// var responseJSON;",
+							"var data = JSON.parse(responseBody)",
+							"try {",
+							"    // tests[\"body contains info\"] = responseBody.has(\"info\");",
+							"    tests[\"code is 0\"] = data.code === \"0\";",
+							"    ",
+							"}",
+							"catch (e) {}",
+							"",
+							"tests[\"status code is 200\"] = responseCode.code === 200;",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{url}}/iWork/sys/login",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"cellphone\":\"15712008191\",\"password\":\"888888\"}"
+				},
+				"description": "xx"
+			},
+			"response": []
+		},
+		{
+			"name": "getCurrUserOfWork",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"// var responseJSON;",
+							"var body = JSON.parse(responseBody);",
+							"try {",
+							"    // tests[\"body contains info\"] = responseBody.has(\"info\");",
+							"    tests[\"confirm username\"] = body.data.userInfo.userName === \"liu_dev\";",
+							"    ",
+							"}",
+							"catch (e) {}",
+							"",
+							"tests[\"status code is 200\"] = responseCode.code === 200;",
+							"",
+							"// #设置环境变量orgId，给switchCompany用例使用",
+							"var orgId = body.data.orgList[0].id;",
+							"postman.setEnvironmentVariable(\"orgId\", orgId);"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{url}}/iWork/sys/getCurrUserOfWork",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": "login后请求这个能获取用户，组织信息"
+			},
+			"response": []
+		},
+		{
+			"name": "switchCompany",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": {
+					"raw": "{{url}}/iWork/home/switchCompany/{{orgId}}?_=1536043109207",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"iWork",
+						"home",
+						"switchCompany",
+						"{{orgId}}"
+					],
+					"query": [
+						{
+							"key": "_",
+							"value": "1536043109207",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "切换组织"
+			},
+			"response": []
+		}
+	]
+}
