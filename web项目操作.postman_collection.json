@@ -1,0 +1,320 @@
+{
+	"variables": [],
+	"info": {
+		"name": "web项目操作",
+		"_postman_id": "080e492f-b354-be71-a823-252d75ce5240",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"正常返回\"] = jsonData.error === \"0\";"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://{{web_url}}/iWork/sys/login",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"cellphone\":\"{{cellphone_zcl}}\",\"password\":\"123456\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "switchCompany",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"正常返回\"] = jsonData.error === \"0\";"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": {
+					"raw": "http://{{web_url}}/iWork/home/switchCompany/{{companyId_zcl}}?_=1531399163852",
+					"protocol": "http",
+					"host": [
+						"{{web_url}}"
+					],
+					"path": [
+						"iWork",
+						"home",
+						"switchCompany",
+						"{{companyId_zcl}}"
+					],
+					"query": [
+						{
+							"key": "_",
+							"value": "1531399163852",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"cellphone\":\"13680809727\",\"password\":\"123456\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "getProjects",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"正常返回\"] = jsonData.error === \"0\";"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://{{web_url}}/iWork/project/getProjects",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"type\":1,\"companyNames\":\"\",\"partyANames\":\"\",\"partyBNames\":\"\",\"buildTypeNames\":\"\",\"status\":\"\",\"orderField\":\"\",\"orderSign\":\"\",\"busPersonInCharge\":\"\",\"busPersonInChargeAssistant\":\"\",\"designPersonInCharge\":\"\",\"designPersonInChargeAssistant\":\"\",\"designCompanyNames\":\"2d73b54cf0114d2f9ef87711652b1156\",\"pageIndex\":0,\"pageSize\":10}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "listOptionalTitle",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"正常返回\"] = jsonData.error === \"0\";"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://{{web_url}}/iWork/project/listOptionalTitle",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"accountId\":\"{{accountId}}\",\"appOrgId\":\"{{companyId_zcl}}\"\n,\"type\":0\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "insertProCondition",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"正常返回\"] = jsonData.error === \"0\";"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://{{web_url}}/iWork/project/insertProCondition",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"accountId\":\"{{accountId}}\",\"appOrgId\":\"{{companyId}}\"\n,\"code\":\"signDate,busPersonInCharge\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "getProjectConditions",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"正常返回\"] = jsonData.error === \"0\";"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://{{web_url}}/iWork/project/getProjectConditions",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"type\":1,\"companyNames\":\"\",\"partyANames\":\"\",\"partyBNames\":\"\",\"buildTypeNames\":\"\",\"status\":\"\",\"orderField\":\"\",\"orderSign\":\"\",\"busPersonInCharge\":\"\",\"busPersonInChargeAssistant\":\"\",\"designPersonInCharge\":\"\",\"designPersonInChargeAssistant\":\"\",\"designCompanyNames\":\"2d73b54cf0114d2f9ef87711652b1156\",\"pageIndex\":0,\"pageSize\":10}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "changeTitle",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"正常返回\"] = jsonData.error === \"0\";"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://{{web_url}}/iWork/project/changeTitle",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"accountId\":\"{{accountId}}\",\"appOrgId\":\"{{companyId_zcl}}\"\n,\"type\":0,\"titleCodeList\":[\"contract\",\"contractReal\"]\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "listTitle",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"正常返回\"] = jsonData.error === \"0\";"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://{{web_url}}/iWork/project/listTitle",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"accountId\":\"{{accountId}}\",\"appOrgId\":\"{{companyId_zcl}}\"\n,\"type\":0\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "listProject",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"正常返回\"] = jsonData.error === \"0\";"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://{{web_url}}/iWork/project/listProject",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"accountId\":\"{{accountId}}\",\"appOrgId\":\"{{companyId_zcl}}\"\n\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

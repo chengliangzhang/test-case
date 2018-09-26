@@ -1,0 +1,224 @@
+{
+	"variables": [],
+	"info": {
+		"name": "web交付",
+		"_postman_id": "f2d94cba-c5e4-003e-7624-592c23966e19",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"正常返回\"] = jsonData.error === \"0\";"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://{{web_url}}/iWork/sys/login",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"cellphone\":\"13680809727\",\"password\":\"123456\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "switchCompany",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"正常返回\"] = jsonData.error === \"0\";"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": {
+					"raw": "http://{{web_url}}/iWork/home/switchCompany/{{companyId}}?_=1531399163852",
+					"protocol": "http",
+					"host": [
+						"{{web_url}}"
+					],
+					"path": [
+						"iWork",
+						"home",
+						"switchCompany",
+						"{{companyId}}"
+					],
+					"query": [
+						{
+							"key": "_",
+							"value": "1531399163852",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"cellphone\":\"13680809727\",\"password\":\"123456\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "sendarchivedFileNotifier",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"正常返回\"] = jsonData.error === \"0\";"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://{{web_url}}/iWork/projectSkyDriver/sendarchivedFileNotifier",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"targetId\":\"{{issueId}}\",\"projectId\":\"{{projectId}}\",\"companyId\":\"{{companyId}}\",\"id\":\"{{nodeId}}\",\"userId\":\"{{accountId}}\",\"remarks\":\"测试交付\",\"taskName\":\"正\",\"deadline\":\"2018-07-16\",\"userArr\":[{\"id\":\"{{memberId}}\",\"name\":\"sun\"}],\"isFinished\":\"1\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "listDeliver",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"正常返回\"] = jsonData.error === \"0\";"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://{{web_url}}/iWork/myTask/listDeliver",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"issueTaskId\":\"{{issueId}}\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "changeDeliver",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"正常返回\"] = jsonData.error === \"0\";"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://{{web_url}}/iWork/myTask/changeDeliver",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"targetId\":\"98a10666bf6e4d3d931aa6fdabc56537\",\"projectId\":\"0dd15889b33e482ea2dea0255121991a\",\"companyId\":\"d18bda5241da402c965923aca6554fb0\",\"userId\":\"d3c73abb16704355a56b38aade9cf812\",\"id\":\"eadcda77e03545618d8b8bed015c05e4\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "deleteDeliver",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"正常返回\"] = jsonData.error === \"0\";"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://{{web_url}}/iWork/myTask/deleteDeliver",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\":\"d61e8fbc26cf4d52b6dbd9933ee1ab92\",\"accountId\":\"{{accountId}}\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

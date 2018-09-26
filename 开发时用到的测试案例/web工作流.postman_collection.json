@@ -1,0 +1,224 @@
+{
+	"variables": [],
+	"info": {
+		"name": "web工作流",
+		"_postman_id": "bfd8db5c-4de1-e644-3816-aedf86e861dd",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"正常返回\"] = jsonData.error === \"0\";"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://{{web_url}}/iWork/sys/login",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"cellphone\":\"13680809727\",\"password\":\"123456\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "switchCompany",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"正常返回\"] = jsonData.error === \"0\";"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": {
+					"raw": "http://{{web_url}}/iWork/home/switchCompany/{{companyId_zcl}}?_=1531399163852",
+					"protocol": "http",
+					"host": [
+						"{{web_url}}"
+					],
+					"path": [
+						"iWork",
+						"home",
+						"switchCompany",
+						"{{companyId_zcl}}"
+					],
+					"query": [
+						{
+							"key": "_",
+							"value": "1531399163852",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"cellphone\":\"13680809727\",\"password\":\"123456\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "prepareProcessDefine",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"正常返回\"] = jsonData.error === \"0\";"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://{{web_url}}/iWork/workflow/prepareProcessDefine",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"accountId\":\"{{accountId}}\",\"appOrgId\":\"{{companyId_zcl}}\"\n,\"key\":\"2bcc990441d441a689aaa7e2f973d438\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "changeProcessDefine",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"正常返回\"] = jsonData.error === \"0\";"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://{{web_url}}/iWork/workflow/changeProcessDefine",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"accountId\":\"{{accountId}}\",\"appOrgId\":\"{{companyId}}\",\n\t\"name\":\"报销\",\"key\":\"costApply\",\"type\":\"3\",\n\t\"documentation\":\"axaxax\",\n\t\"candidateStarterGroupList\":[{\"id\":\"1035a83b33f411e8be48f8db88fcba36\"},{\"id\":\"1035b9cb33f411e8be48f8db88fcba36\"}],\n\t\"candidateStarterUserList\":[{\"id\":\"662e08496efd4121b244f645c0b803b0\"},{\"id\":\"1035b9cb33f411e8be48f8db88fcba36\"}],\n\t\"flowTaskGroupList\":[\n\t\t{\n\t\t\t\"flowTaskList\":[{\"candidateUserList\":[{\"id\":\"5ffee496fa814ea4b6d26a9208b00a0b\"}]},\n\t\t\t\t{\"name\":\"bbb\",\"candidateGroupList\":[{\"id\":\"1035a83b33f411e8be48f8db88fcba36\"}]}]\n\t\t},\n\t\t{\"name\":\"10\",\n\t\t\t\"flowTaskList\":[{\"candidateUserList\":[{\"id\":\"0640f7c1e1be4149be249e6c1b3f66fe\"}]},\n\t\t\t\t{\"name\":\"xxx\",\"candidateGroupList\":[{\"id\":\"1035a83b33f411e8be48f8db88fcba36\"}]}]\n\t\t},\n\t\t{\"name\":\"100\",\n\t\t\t\"flowTaskList\":[{\"assigneeUser\":{\"id\":\"0640f7c1e1be4149be249e6c1b3f66fe\"}},\n\t\t\t\t{\"name\":\"xxx\",\"candidateGroupList\":[{\"id\":\"1035a83b33f411e8be48f8db88fcba36\"}]}]\n\t\t},\n\t\t{\"name\":\"1000\",\n\t\t\t\"flowTaskList\":[]\n\t\t}\n\t]\n}\n"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "listProcessDefine",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"正常返回\"] = jsonData.error === \"0\";"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://{{web_url}}/iWork/dynamicAudit/initDynamicAudit",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"accountId\":\"{{accountId}}\",\"appOrgId\":\"{{companyId_zcl}}\"\n,\"formId\":null,\"fieldPid\":null\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "deleteProcessDefine",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"正常返回\"] = jsonData.error === \"0\";"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://{{web_url}}/iWork/workflow/deleteProcessDefine",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"accountId\":\"{{accountId}}\",\"appOrgId\":\"{{companyId}}\",\n\"key\":\"costApply\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,224 @@
+{
+	"variables": [],
+	"info": {
+		"name": "web显示任务信息",
+		"_postman_id": "1ecc40dc-9219-1d12-a048-c55efdd0c3a7",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"正常返回\"] = jsonData.error === \"0\";"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://{{web_url}}/iWork/sys/login",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"cellphone\":\"13680809727\",\"password\":\"123456\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "switchCompany",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"正常返回\"] = jsonData.error === \"0\";"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": {
+					"raw": "http://{{web_url}}/iWork/home/switchCompany/2932a60f13ce45c1beb04617f96fffa4?_=1531399163852",
+					"protocol": "http",
+					"host": [
+						"{{web_url}}"
+					],
+					"path": [
+						"iWork",
+						"home",
+						"switchCompany",
+						"2932a60f13ce45c1beb04617f96fffa4"
+					],
+					"query": [
+						{
+							"key": "_",
+							"value": "1531399163852",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"cellphone\":\"13680809727\",\"password\":\"123456\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "getTaskGroupInfo",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"正常返回\"] = jsonData.error === \"0\";"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://{{web_url}}/iWork/projectTask/getTaskGroupInfo",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"accountId\":\"{{accountId}}\",\"companyId\":\"{{companyId}}\"\n\t,\"projectId\":\"{{projectId}}\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "getDesignTaskList",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"正常返回\"] = jsonData.error === \"0\";"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://{{web_url}}/iWork/projectTask/getDesignTaskList",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"projectId\":\"{{projectId}}\",\"type\":2}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "getIssueInfo",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"正常返回\"] = jsonData.error === \"0\";"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://{{web_url}}/iWork/projectTask/getIssueInfo",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"projectId\":\"{{projectId}}\",\"type\":2}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "getDesignManagerInfo",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"正常返回\"] = jsonData.error === \"0\";"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://{{web_url}}/iWork/projectTask/getDesignManagerInfo",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"projectId\":\"{{projectId}}\",\"type\":2}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

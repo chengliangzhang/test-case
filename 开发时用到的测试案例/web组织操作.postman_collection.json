@@ -1,0 +1,128 @@
+{
+	"variables": [],
+	"info": {
+		"name": "web组织操作",
+		"_postman_id": "fb9d5af7-2e5c-40dc-da3b-9a48626c0d60",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"正常返回\"] = jsonData.error === \"0\";"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://{{web_url}}/iWork/sys/login",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"cellphone\":\"13680809727\",\"password\":\"123456\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "switchCompany",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"正常返回\"] = jsonData.error === \"0\";"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": {
+					"raw": "http://{{web_url}}/iWork/home/switchCompany/{{companyId}}?_=1531399163852",
+					"protocol": "http",
+					"host": [
+						"{{web_url}}"
+					],
+					"path": [
+						"iWork",
+						"home",
+						"switchCompany",
+						"{{companyId}}"
+					],
+					"query": [
+						{
+							"key": "_",
+							"value": "1531399163852",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"cellphone\":\"13680809727\",\"password\":\"123456\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "listCompany",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"正常返回\"] = jsonData.error === \"0\";"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://{{web_url}}/iWork/org/listCompany",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"accountId\":\"{{accountId}}\",\"appOrgId\":\"{{companyId}}\",\n\t\"name\":\"报销\",\"key\":\"costApply\",\"type\":\"3\",\n\t\"startDigitCondition\":{\"varKey\":\"sss\",\"pointList\":[10,100,1000]}\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,141 @@
+{
+	"variables": [],
+	"info": {
+		"name": "app获取个人任务",
+		"_postman_id": "d3b74b6c-f059-f2d0-e722-23772fb22be2",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"正常返回\"] = jsonData.error === \"0\";",
+							"postman.setEnvironmentVariable(\"token\", jsonData.data.token);",
+							"postman.setEnvironmentVariable(\"accountId\", jsonData.data.accountId);"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://{{app_url}}/sys/login",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"loginName\":\"13680809727\",\"password\":\"E10ADC3949BA59ABBE56E057F20F883E\",\"platform\":\"android\",\"IMEI\":\"863818036900117\",\"interfaceVersion\":\"1\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "getMyTaskByProjectId",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"正常返回\"] = jsonData.error === \"0\";"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://{{app_url}}/v2/mytask/getMyTaskByProjectId",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"token\":\"{{token}}\",\"platform\":\"android\",\"IMEI\":\"863818036900117\",\"interfaceVersion\":\"1\"\n\t,\"accountId\":\"{{accountId}}\",\"appOrgId\":\"{{companyId}}\"\n\t,\"isProjectTask\":\"1\",\"type\":\"0\",\"pageSize\":10,\"pageIndex\":0\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "handleMyTask",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"正常返回\"] = jsonData.error === \"0\";"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://{{app_url}}/v2/mytask/handleMyTask",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"token\":\"{{token}}\",\"platform\":\"android\",\"IMEI\":\"863818036900117\",\"interfaceVersion\":\"1\"\n\t,\"accountId\":\"{{accountId}}\",\"appOrgId\":\"{{companyId}}\"\n\t,\"id\":\"{{myTaskId}}\",\"status\":\"1\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "getMyTaskDetail",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"正常返回\"] = jsonData.error === \"0\";"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://{{app_url}}/v2/mytask/getMyTaskDetailNew",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"token\":\"{{token}}\",\"platform\":\"android\",\"IMEI\":\"863818036900117\",\"interfaceVersion\":\"1\"\n\t,\"accountId\":\"{{accountId}}\",\"appOrgId\":\"{{companyId}}\"\n\t,\"id\":\"\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

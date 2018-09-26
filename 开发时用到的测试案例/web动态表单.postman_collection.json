@@ -1,0 +1,328 @@
+{
+	"variables": [],
+	"info": {
+		"name": "web动态表单",
+		"_postman_id": "48c94565-24db-9b9a-b4d0-24bf2dd04aef",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"正常返回\"] = jsonData.error === \"0\";"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://{{web_url}}/iWork/sys/login",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"cellphone\":\"13680809727\",\"password\":\"123456\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "switchCompany",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"正常返回\"] = jsonData.error === \"0\";"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": {
+					"raw": "http://{{web_url}}/iWork/home/switchCompany/{{companyId_zcl}}?_=1531399163852",
+					"protocol": "http",
+					"host": [
+						"{{web_url}}"
+					],
+					"path": [
+						"iWork",
+						"home",
+						"switchCompany",
+						"{{companyId_zcl}}"
+					],
+					"query": [
+						{
+							"key": "_",
+							"value": "1531399163852",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"cellphone\":\"13680809727\",\"password\":\"123456\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "getFormDetail",
+			"request": {
+				"url": "http://{{web_url}}/iWork/dynamicForm/getFormDetail",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"accountId\":\"{{accountId}}\",\"appOrgId\":\"{{companyId}}\"\n\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "addProcessGroup",
+			"request": {
+				"url": "http://{{web_url}}/iWork/workflow/addProcessGroup",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"accountId\":\"{{accountId}}\",\"appOrgId\":\"{{companyId_zcl}}\"\n,\"name\":\"xxx\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "addProcess",
+			"request": {
+				"url": "http://{{web_url}}/iWork/workflow/addProcess",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"accountId\":\"{{accountId}}\",\"appOrgId\":\"7661faa2fea44c2285918ae6127ac5cd\"\n,\"name\":\"abcde\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "insertDynamicForm",
+			"request": {
+				"url": "http://{{web_url}}/iWork/dynamicForm/insertDynamicForm",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"accountId\":\"{{accountId}}\",\"appOrgId\":\"{{companyId_zcl}}\"\n,\"formName\":\"abcde\",\"formType\":\"cc7b7294e6274c59b362eabf56e7c454\",\"documentation\":\"测试\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "startOrStopDynamicForm",
+			"request": {
+				"url": "http://{{web_url}}/iWork/dynamicForm/startOrStopDynamicForm",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"accountId\":\"{{accountId}}\",\"appOrgId\":\"{{companyId_zcl}}\"\n,\"id\":\"67b9bbfed96b4b14b8b2d84d6fc66cb6\",\"status\":\"1\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "deleteDynamicForm",
+			"request": {
+				"url": "http://{{web_url}}/iWork/dynamicForm/deleteDynamicForm",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"accountId\":\"{{accountId}}\",\"appOrgId\":\"{{companyId_zcl}}\"\n,\"id\":\"67b9bbfed96b4b14b8b2d84d6fc66cb6\",\"status\":\"1\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "prepareFormToEdit",
+			"request": {
+				"url": "http://{{web_url}}/iWork/dynamicForm/prepareFormToEdit",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"accountId\":\"{{accountId}}\",\"appOrgId\":\"{{companyId_zcl}}\"\n,\"id\":\"2bcc990441d441a689aaa7e2f973d438\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "saveAuditDetail",
+			"request": {
+				"url": "http://{{web_url}}/iWork/dynamicForm/saveAuditDetail",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"accountId\":\"{{accountId}}\",\"appOrgId\":\"{{companyId}}\"\n\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "listForm",
+			"request": {
+				"url": "http://{{web_url}}/iWork/dynamicForm/listForm",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"accountId\":\"{{accountId}}\",\"appOrgId\":\"{{companyId_zcl}}\"\n,\"useGroup\":1\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "listActiveForm",
+			"request": {
+				"url": "http://{{web_url}}/iWork/dynamicForm/listActiveForm",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"accountId\":\"{{accountId}}\",\"appOrgId\":\"{{companyId_zcl}}\"\n,\"useGroup\":1\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "initDynamicAudit",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"正常返回\"] = jsonData.error === \"0\";"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://{{web_url}}/iWork/dynamicAudit/initDynamicAudit",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"accountId\":\"{{accountId}}\",\"appOrgId\":\"{{companyId_zcl}}\"\n,\"formId\":\"leave\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

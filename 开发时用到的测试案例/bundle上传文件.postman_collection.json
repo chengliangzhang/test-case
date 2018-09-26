@@ -1,0 +1,311 @@
+{
+	"variables": [],
+	"info": {
+		"name": "bundle上传文件",
+		"_postman_id": "05ba18dd-8e96-64ee-fb69-931dba4023b5",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "uploadFile",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"正常返回\"] = jsonData.error === \"0\";"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://{{file_url}}/fileCenter/netFile/uploadFile",
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "id",
+							"value": "WU_FILE_0",
+							"type": "text",
+							"description": "",
+							"disabled": true
+						},
+						{
+							"key": "name",
+							"value": "【1】任务签发交付操作.jpg",
+							"type": "text",
+							"description": ""
+						},
+						{
+							"key": "type",
+							"value": "image/jpeg",
+							"type": "text",
+							"description": ""
+						},
+						{
+							"key": "lastModifiedDate",
+							"value": "Sat Jul 14 2018 15:57:25 GMT+0800",
+							"type": "text",
+							"description": ""
+						},
+						{
+							"key": "size",
+							"value": "792245",
+							"type": "text",
+							"description": ""
+						},
+						{
+							"key": "companyId",
+							"value": "{{companyId}}",
+							"type": "text",
+							"description": ""
+						},
+						{
+							"key": "chunkPerSize",
+							"value": "5242880",
+							"type": "text",
+							"description": ""
+						},
+						{
+							"key": "accountId",
+							"value": "{{accountId}}",
+							"type": "text",
+							"description": ""
+						},
+						{
+							"key": "projectId",
+							"value": "{{projectId}}",
+							"type": "text",
+							"description": ""
+						},
+						{
+							"key": "pid",
+							"value": "{{dirId}}",
+							"type": "text",
+							"description": ""
+						},
+						{
+							"key": "file",
+							"type": "file",
+							"description": "",
+							"src": "【1】任务签发交付操作.jpg"
+						},
+						{
+							"key": "uploadId",
+							"value": "{{fileId}}",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "uploadProjectContract",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"正常返回\"] = jsonData.error === \"0\";"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://{{file_url}}/fileCenter/attachment/uploadProjectContract",
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "id",
+							"value": "WU_FILE_0",
+							"type": "text",
+							"description": "",
+							"disabled": true
+						},
+						{
+							"key": "name",
+							"value": "【1】任务签发交付操作.jpg",
+							"type": "text",
+							"description": ""
+						},
+						{
+							"key": "type",
+							"value": "image/jpeg",
+							"type": "text",
+							"description": ""
+						},
+						{
+							"key": "lastModifiedDate",
+							"value": "Sat Jul 14 2018 15:57:25 GMT+0800",
+							"type": "text",
+							"description": ""
+						},
+						{
+							"key": "size",
+							"value": "792245",
+							"type": "text",
+							"description": ""
+						},
+						{
+							"key": "companyId",
+							"value": "{{companyId}}",
+							"type": "text",
+							"description": ""
+						},
+						{
+							"key": "chunkPerSize",
+							"value": "5242880",
+							"type": "text",
+							"description": ""
+						},
+						{
+							"key": "accountId",
+							"value": "{{accountId}}",
+							"type": "text",
+							"description": ""
+						},
+						{
+							"key": "projectId",
+							"value": "{{projectId}}",
+							"type": "text",
+							"description": ""
+						},
+						{
+							"key": "pid",
+							"value": "{{dirId}}",
+							"type": "text",
+							"description": ""
+						},
+						{
+							"key": "file",
+							"value": "",
+							"type": "file",
+							"description": ""
+						},
+						{
+							"key": "uploadId",
+							"value": "{{fileId}}",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "uploadCostPlanAttach",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"正常返回\"] = jsonData.error === \"0\";"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://{{file_url}}/fileCenter/attachment/uploadCostPlanAttach",
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "id",
+							"value": "WU_FILE_1",
+							"type": "text",
+							"description": ""
+						},
+						{
+							"key": "name",
+							"value": "任务签发及生产安排说明.pdf",
+							"type": "text",
+							"description": ""
+						},
+						{
+							"key": "type",
+							"value": "application/pdf",
+							"type": "text",
+							"description": ""
+						},
+						{
+							"key": "lastModifiedDate",
+							"value": "Sat Jul 14 2018 15:57:25 GMT+0800",
+							"type": "text",
+							"description": ""
+						},
+						{
+							"key": "size",
+							"value": "36279",
+							"type": "text",
+							"description": ""
+						},
+						{
+							"key": "companyId",
+							"value": "{{companyId}}",
+							"type": "text",
+							"description": ""
+						},
+						{
+							"key": "chunkPerSize",
+							"value": "5242880",
+							"type": "text",
+							"description": ""
+						},
+						{
+							"key": "accountId",
+							"value": "{{accountId}}",
+							"type": "text",
+							"description": ""
+						},
+						{
+							"key": "projectId",
+							"value": "{{projectId}}",
+							"type": "text",
+							"description": ""
+						},
+						{
+							"key": "pid",
+							"value": "{{dirId}}",
+							"type": "text",
+							"description": ""
+						},
+						{
+							"key": "file",
+							"value": "",
+							"type": "file",
+							"description": ""
+						},
+						{
+							"key": "uploadId",
+							"value": "{{fileId}}",
+							"description": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

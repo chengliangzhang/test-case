@@ -1,0 +1,165 @@
+{
+	"variables": [],
+	"info": {
+		"name": "app获取项目信息",
+		"_postman_id": "a69a549c-7f6c-a368-4e3d-3c33ac3c37ea",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"正常返回\"] = jsonData.error === \"0\";",
+							"postman.setEnvironmentVariable(\"token\", jsonData.data.token);",
+							"postman.setEnvironmentVariable(\"accountId\", jsonData.data.accountId);"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://{{app_url}}/sys/login",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"loginName\":\"13680809727\",\"password\":\"E10ADC3949BA59ABBE56E057F20F883E\",\"platform\":\"android\",\"IMEI\":\"863818036900117\",\"interfaceVersion\":\"1\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "getProject",
+			"request": {
+				"url": "http://{{app_url}}/v2/project/getProject",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"token\":\"{{token}}\",\"platform\":\"android\",\"IMEI\":\"863818036900117\",\"interfaceVersion\":\"1\"\n\t,\"accountId\":\"{{accountId}}\",\"appOrgId\":\"{{companyId}}\"\n\t,\"id\":\"{{projectId}}\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "listMeasure",
+			"request": {
+				"url": "http://{{app_url}}/v2/project/listMeasure",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"token\":\"{{token}}\",\"platform\":\"android\",\"IMEI\":\"863818036900117\",\"interfaceVersion\":\"1\"\n\t,\"accountId\":\"{{accountId}}\",\"appOrgId\":\"{{companyId}}\"\n\t,\"id\":\"{{projectId}}\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "getUsedPartB",
+			"request": {
+				"url": "http://{{app_url}}/v2/org/getUsedPartB",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"token\":\"{{token}}\",\"platform\":\"android\",\"IMEI\":\"863818036900117\",\"interfaceVersion\":\"1\"\n\t,\"accountId\":\"{{accountId}}\",\"appOrgId\":\"{{companyId}}\"\n\t,\"id\":\"{{projectId}}\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "getProjectFunctionList",
+			"request": {
+				"url": "http://{{app_url}}/v2/project/getProjectFunctionList",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"token\":\"{{token}}\",\"platform\":\"android\",\"IMEI\":\"863818036900117\",\"interfaceVersion\":\"1\"\n\t,\"accountId\":\"{{accountId}}\",\"appOrgId\":\"{{companyId}}\"\n\t,\"id\":\"{{projectId}}\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "getContractInfo",
+			"request": {
+				"url": "http://{{app_url}}/v2/project/getContractInfo",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"token\":\"{{token}}\",\"platform\":\"android\",\"IMEI\":\"863818036900117\",\"interfaceVersion\":\"1\"\n\t,\"accountId\":\"{{accountId}}\",\"appOrgId\":\"{{companyId}}\"\n\t,\"id\":\"{{projectId}}\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "getProjectMore",
+			"request": {
+				"url": "http://{{app_url}}/v2/project/getProjectMore",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"token\":\"{{token}}\",\"platform\":\"android\",\"IMEI\":\"863818036900117\",\"interfaceVersion\":\"1\"\n\t,\"accountId\":\"{{accountId}}\",\"appOrgId\":\"{{companyId}}\"\n\t,\"id\":\"{{projectId}}\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

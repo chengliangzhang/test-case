@@ -1,0 +1,110 @@
+{
+	"variables": [],
+	"info": {
+		"name": "web测试",
+		"_postman_id": "741ee2a2-043f-fd38-d713-221218e4907b",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "securityCode",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"返回状态\"] = jsonData.code === '0';"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://{{url_web}}/iWork/sys/securityCode",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"cellphone\":\"{{zcl_cellphone}}\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "getSecurityCode",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"返回状态\"] = jsonData.code === '0';",
+							"",
+							"",
+							"postman.setGlobalVariable(\"registerCode\", jsonData.data);"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://{{url_web}}/iWork/sys/getSecurityCode",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\"{{zcl_cellphone}}\""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "register",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"返回状态\"] = jsonData.code === '0';"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://{{url_web}}/iWork/sys/register",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"cellphone\":\"{{zcl_cellphone}}\",\"code\":\"{{registerCode}}\",\"userName\":\"测试张成亮\",\"password\":\"123456\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

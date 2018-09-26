@@ -1,0 +1,77 @@
+{
+	"variables": [],
+	"info": {
+		"name": "app读取卯丁秘书",
+		"_postman_id": "c5d5d740-4c3d-b344-0d1c-b197f141da2a",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"正常返回\"] = jsonData.error === \"0\";",
+							"postman.setEnvironmentVariable(\"token\", jsonData.data.token);",
+							"postman.setEnvironmentVariable(\"accountId\", jsonData.data.accountId);"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://{{app_url}}/sys/login",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"loginName\":\"13680809727\",\"password\":\"E10ADC3949BA59ABBE56E057F20F883E\",\"platform\":\"android\",\"IMEI\":\"863818036900117\",\"interfaceVersion\":\"1\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "getMessage",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"正常返回\"] = jsonData.error === \"0\";"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://{{app_url}}/v2/message/getMessage",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"token\":\"{{token}}\",\"platform\":\"android\",\"IMEI\":\"863818036900117\",\"interfaceVersion\":\"1\"\n\t,\"accountId\":\"{{accountId}}\",\"appOrgId\":\"{{companyId}}\"\n\t,\"isProjectTask\":\"1\",\"type\":\"0\",\"pageSize\":10,\"pageIndex\":0\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
